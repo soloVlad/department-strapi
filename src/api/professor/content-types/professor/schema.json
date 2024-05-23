@@ -1,0 +1,68 @@
+{
+  "kind": "collectionType",
+  "collectionName": "professors",
+  "info": {
+    "singularName": "professor",
+    "pluralName": "professors",
+    "displayName": "Professor",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "firstName": {
+      "type": "string",
+      "required": true,
+      "maxLength": 120,
+      "minLength": 2
+    },
+    "secondName": {
+      "type": "string",
+      "required": true,
+      "maxLength": 120,
+      "minLength": 2
+    },
+    "middleName": {
+      "type": "string"
+    },
+    "shownInPreview": {
+      "type": "boolean",
+      "default": false
+    },
+    "isRetired": {
+      "type": "boolean",
+      "default": false
+    },
+    "number": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string",
+      "regex": "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$"
+    },
+    "address": {
+      "type": "string"
+    },
+    "professor_degree": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::professor-degree.professor-degree"
+    },
+    "priority": {
+      "type": "integer",
+      "default": 0,
+      "min": 0,
+      "max": 1000
+    },
+    "avatar": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    }
+  }
+}

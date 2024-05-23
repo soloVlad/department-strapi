@@ -1,0 +1,20 @@
+{
+  "kind": "collectionType",
+  "collectionName": "professor_degrees",
+  "info": {
+    "singularName": "professor-degree",
+    "pluralName": "professor-degrees",
+    "displayName": "ProfessorDegree"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "unique": true,
+      "required": true
+    }
+  }
+}
