@@ -45,7 +45,7 @@
     "address": {
       "type": "string"
     },
-    "professor_degree": {
+    "degree": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::professor-degree.professor-degree"
@@ -57,12 +57,12 @@
       "max": 1000
     },
     "avatar": {
-      "allowedTypes": [
-        "images"
-      ],
       "type": "media",
       "multiple": false,
-      "required": true
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
     }
   }
 }

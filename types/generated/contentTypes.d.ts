@@ -818,7 +818,7 @@ export interface ApiProfessorProfessor extends Schema.CollectionType {
     number: Attribute.String;
     email: Attribute.String;
     address: Attribute.String;
-    professor_degree: Attribute.Relation<
+    degree: Attribute.Relation<
       'api::professor.professor',
       'oneToOne',
       'api::professor-degree.professor-degree'
