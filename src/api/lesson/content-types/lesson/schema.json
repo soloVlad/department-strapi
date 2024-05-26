@@ -1,0 +1,46 @@
+{
+  "kind": "collectionType",
+  "collectionName": "lessons",
+  "info": {
+    "singularName": "lesson",
+    "pluralName": "lessons",
+    "displayName": "Lesson"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "startTime": {
+      "type": "string",
+      "regex": "[0-9]{2}:[0-9]{2}",
+      "required": true
+    },
+    "endTime": {
+      "type": "string",
+      "regex": "[0-9]{2}:[0-9]{2}",
+      "required": true
+    },
+    "classroom": {
+      "type": "string",
+      "required": true
+    },
+    "dayOfWeek": {
+      "type": "enumeration",
+      "enum": [
+        "понедельник",
+        "вторник",
+        "среда",
+        "четверг",
+        "пятница",
+        "суббота"
+      ]
+    },
+    "professor": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::professor.professor",
+      "inversedBy": "lessons"
+    }
+  }
+}

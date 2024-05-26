@@ -1,0 +1,41 @@
+{
+  "kind": "collectionType",
+  "collectionName": "student_works",
+  "info": {
+    "singularName": "student-work",
+    "pluralName": "student-works",
+    "displayName": "StudentWork",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "topic": {
+      "type": "string",
+      "required": true
+    },
+    "studentFullName": {
+      "type": "string",
+      "required": true
+    },
+    "course": {
+      "type": "enumeration",
+      "enum": [
+        "Курс 1",
+        "Курс 2",
+        "Курс 3",
+        "Курс 4",
+        "Магистратура"
+      ],
+      "required": true
+    },
+    "professor": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::professor.professor",
+      "inversedBy": "studentWorks"
+    }
+  }
+}

@@ -12,20 +12,11 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "firstName": {
+    "fullName": {
       "type": "string",
       "required": true,
-      "maxLength": 120,
+      "maxLength": 240,
       "minLength": 2
-    },
-    "secondName": {
-      "type": "string",
-      "required": true,
-      "maxLength": 120,
-      "minLength": 2
-    },
-    "middleName": {
-      "type": "string"
     },
     "shownInPreview": {
       "type": "boolean",
@@ -35,12 +26,10 @@
       "type": "boolean",
       "default": false
     },
-    "number": {
-      "type": "string"
-    },
     "email": {
       "type": "string",
-      "regex": "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$"
+      "regex": "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$",
+      "required": true
     },
     "address": {
       "type": "string"
@@ -63,6 +52,21 @@
       "allowedTypes": [
         "images"
       ]
+    },
+    "number": {
+      "type": "biginteger"
+    },
+    "studentWorks": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::student-work.student-work",
+      "mappedBy": "professor"
+    },
+    "lessons": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::lesson.lesson",
+      "mappedBy": "professor"
     }
   }
 }

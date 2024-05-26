@@ -1,0 +1,45 @@
+{
+  "kind": "collectionType",
+  "collectionName": "subjects",
+  "info": {
+    "singularName": "subject",
+    "pluralName": "subjects",
+    "displayName": "Subject",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "course": {
+      "type": "enumeration",
+      "enum": [
+        "курс 1",
+        "курс 2",
+        "курс 3",
+        "курс 4",
+        "маг 1 курс",
+        "маг 2 курс"
+      ],
+      "required": true
+    },
+    "semester": {
+      "type": "enumeration",
+      "enum": [
+        "осень",
+        "весна"
+      ],
+      "required": true
+    },
+    "examinations": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::examination.examination"
+    }
+  }
+}

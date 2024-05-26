@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "document_categories",
+  "info": {
+    "singularName": "document-category",
+    "pluralName": "document-categories",
+    "displayName": "DocumentCategory",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "category": {
+      "type": "string",
+      "required": true
+    },
+    "key": {
+      "type": "string",
+      "required": true,
+      "regex": "[a-zA-Z]+"
+    }
+  }
+}

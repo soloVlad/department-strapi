@@ -788,6 +788,188 @@ export interface PluginI18NLocale extends Schema.CollectionType {
   };
 }
 
+export interface ApiDocumentDocument extends Schema.CollectionType {
+  collectionName: 'documents';
+  info: {
+    singularName: 'document';
+    pluralName: 'documents';
+    displayName: 'Document';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String & Attribute.Required;
+    file: Attribute.Media & Attribute.Required;
+    document_category: Attribute.Relation<
+      'api::document.document',
+      'oneToOne',
+      'api::document-category.document-category'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::document.document',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::document.document',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiDocumentCategoryDocumentCategory
+  extends Schema.CollectionType {
+  collectionName: 'document_categories';
+  info: {
+    singularName: 'document-category';
+    pluralName: 'document-categories';
+    displayName: 'DocumentCategory';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    category: Attribute.String & Attribute.Required;
+    key: Attribute.String & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::document-category.document-category',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::document-category.document-category',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiExaminationExamination extends Schema.CollectionType {
+  collectionName: 'examinations';
+  info: {
+    singularName: 'examination';
+    pluralName: 'examinations';
+    displayName: 'Examination';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::examination.examination',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::examination.examination',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiLessonLesson extends Schema.CollectionType {
+  collectionName: 'lessons';
+  info: {
+    singularName: 'lesson';
+    pluralName: 'lessons';
+    displayName: 'Lesson';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    startTime: Attribute.String & Attribute.Required;
+    endTime: Attribute.String & Attribute.Required;
+    classroom: Attribute.String & Attribute.Required;
+    dayOfWeek: Attribute.Enumeration<
+      [
+        '\u043F\u043E\u043D\u0435\u0434\u0435\u043B\u044C\u043D\u0438\u043A',
+        '\u0432\u0442\u043E\u0440\u043D\u0438\u043A',
+        '\u0441\u0440\u0435\u0434\u0430',
+        '\u0447\u0435\u0442\u0432\u0435\u0440\u0433',
+        '\u043F\u044F\u0442\u043D\u0438\u0446\u0430',
+        '\u0441\u0443\u0431\u0431\u043E\u0442\u0430'
+      ]
+    >;
+    professor: Attribute.Relation<
+      'api::lesson.lesson',
+      'manyToOne',
+      'api::professor.professor'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::lesson.lesson',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::lesson.lesson',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiNewNew extends Schema.CollectionType {
+  collectionName: 'news';
+  info: {
+    singularName: 'new';
+    pluralName: 'news';
+    displayName: 'New';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    content: Attribute.RichText & Attribute.Required;
+    title: Attribute.String & Attribute.Required;
+    shortDescription: Attribute.Text & Attribute.Required;
+    coverImage: Attribute.Media;
+    category: Attribute.Enumeration<
+      [
+        '\u043D\u043E\u0432\u043E\u0441\u0442\u0438',
+        '\u0434\u043E\u0441\u0442\u0438\u0436\u0435\u043D\u0438\u044F',
+        '\u043F\u043E\u0437\u0434\u0440\u0430\u0432\u043B\u0435\u043D\u0438\u044F',
+        '\u043C\u0435\u0440\u043E\u043F\u0440\u0438\u044F\u0442\u0438\u044F',
+        '\u0443\u0432\u0435\u0434\u043E\u043C\u043B\u0435\u043D\u0438\u044F'
+      ]
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::new.new', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::new.new', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
 export interface ApiProfessorProfessor extends Schema.CollectionType {
   collectionName: 'professors';
   info: {
@@ -800,23 +982,15 @@ export interface ApiProfessorProfessor extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    firstName: Attribute.String &
+    fullName: Attribute.String &
       Attribute.Required &
       Attribute.SetMinMaxLength<{
         minLength: 2;
-        maxLength: 120;
+        maxLength: 240;
       }>;
-    secondName: Attribute.String &
-      Attribute.Required &
-      Attribute.SetMinMaxLength<{
-        minLength: 2;
-        maxLength: 120;
-      }>;
-    middleName: Attribute.String;
     shownInPreview: Attribute.Boolean & Attribute.DefaultTo<false>;
     isRetired: Attribute.Boolean & Attribute.DefaultTo<false>;
-    number: Attribute.String;
-    email: Attribute.String;
+    email: Attribute.String & Attribute.Required;
     address: Attribute.String;
     degree: Attribute.Relation<
       'api::professor.professor',
@@ -833,6 +1007,17 @@ export interface ApiProfessorProfessor extends Schema.CollectionType {
       > &
       Attribute.DefaultTo<0>;
     avatar: Attribute.Media & Attribute.Required;
+    number: Attribute.BigInteger;
+    studentWorks: Attribute.Relation<
+      'api::professor.professor',
+      'oneToMany',
+      'api::student-work.student-work'
+    >;
+    lessons: Attribute.Relation<
+      'api::professor.professor',
+      'oneToMany',
+      'api::lesson.lesson'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -882,6 +1067,104 @@ export interface ApiProfessorDegreeProfessorDegree
   };
 }
 
+export interface ApiStudentWorkStudentWork extends Schema.CollectionType {
+  collectionName: 'student_works';
+  info: {
+    singularName: 'student-work';
+    pluralName: 'student-works';
+    displayName: 'StudentWork';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    topic: Attribute.String & Attribute.Required;
+    studentFullName: Attribute.String & Attribute.Required;
+    course: Attribute.Enumeration<
+      [
+        '\u041A\u0443\u0440\u0441 1',
+        '\u041A\u0443\u0440\u0441 2',
+        '\u041A\u0443\u0440\u0441 3',
+        '\u041A\u0443\u0440\u0441 4',
+        '\u041C\u0430\u0433\u0438\u0441\u0442\u0440\u0430\u0442\u0443\u0440\u0430'
+      ]
+    > &
+      Attribute.Required;
+    professor: Attribute.Relation<
+      'api::student-work.student-work',
+      'manyToOne',
+      'api::professor.professor'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::student-work.student-work',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::student-work.student-work',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiSubjectSubject extends Schema.CollectionType {
+  collectionName: 'subjects';
+  info: {
+    singularName: 'subject';
+    pluralName: 'subjects';
+    displayName: 'Subject';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String & Attribute.Required;
+    course: Attribute.Enumeration<
+      [
+        '\u043A\u0443\u0440\u0441 1',
+        '\u043A\u0443\u0440\u0441 2',
+        '\u043A\u0443\u0440\u0441 3',
+        '\u043A\u0443\u0440\u0441 4',
+        '\u043C\u0430\u0433 1 \u043A\u0443\u0440\u0441',
+        '\u043C\u0430\u0433 2 \u043A\u0443\u0440\u0441'
+      ]
+    > &
+      Attribute.Required;
+    semester: Attribute.Enumeration<
+      ['\u043E\u0441\u0435\u043D\u044C', '\u0432\u0435\u0441\u043D\u0430']
+    > &
+      Attribute.Required;
+    examinations: Attribute.Relation<
+      'api::subject.subject',
+      'oneToMany',
+      'api::examination.examination'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::subject.subject',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::subject.subject',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -900,8 +1183,15 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::i18n.locale': PluginI18NLocale;
+      'api::document.document': ApiDocumentDocument;
+      'api::document-category.document-category': ApiDocumentCategoryDocumentCategory;
+      'api::examination.examination': ApiExaminationExamination;
+      'api::lesson.lesson': ApiLessonLesson;
+      'api::new.new': ApiNewNew;
       'api::professor.professor': ApiProfessorProfessor;
       'api::professor-degree.professor-degree': ApiProfessorDegreeProfessorDegree;
+      'api::student-work.student-work': ApiStudentWorkStudentWork;
+      'api::subject.subject': ApiSubjectSubject;
     }
   }
 }
