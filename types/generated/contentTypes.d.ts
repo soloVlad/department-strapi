@@ -1018,6 +1018,11 @@ export interface ApiProfessorProfessor extends Schema.CollectionType {
       'oneToMany',
       'api::lesson.lesson'
     >;
+    work_themes: Attribute.Relation<
+      'api::professor.professor',
+      'oneToMany',
+      'api::work-theme.work-theme'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1165,6 +1170,41 @@ export interface ApiSubjectSubject extends Schema.CollectionType {
   };
 }
 
+export interface ApiWorkThemeWorkTheme extends Schema.CollectionType {
+  collectionName: 'work_themes';
+  info: {
+    singularName: 'work-theme';
+    pluralName: 'work-themes';
+    displayName: 'WorkTheme';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String & Attribute.Required;
+    professor: Attribute.Relation<
+      'api::work-theme.work-theme',
+      'manyToOne',
+      'api::professor.professor'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::work-theme.work-theme',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::work-theme.work-theme',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -1192,6 +1232,7 @@ declare module '@strapi/types' {
       'api::professor-degree.professor-degree': ApiProfessorDegreeProfessorDegree;
       'api::student-work.student-work': ApiStudentWorkStudentWork;
       'api::subject.subject': ApiSubjectSubject;
+      'api::work-theme.work-theme': ApiWorkThemeWorkTheme;
     }
   }
 }

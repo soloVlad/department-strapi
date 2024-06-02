@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "work_themes",
+  "info": {
+    "singularName": "work-theme",
+    "pluralName": "work-themes",
+    "displayName": "WorkTheme"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "professor": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::professor.professor",
+      "inversedBy": "work_themes"
+    }
+  }
+}

@@ -67,6 +67,12 @@
       "relation": "oneToMany",
       "target": "api::lesson.lesson",
       "mappedBy": "professor"
+    },
+    "work_themes": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::work-theme.work-theme",
+      "mappedBy": "professor"
     }
   }
 }
